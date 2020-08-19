@@ -38,14 +38,6 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
         <View style={styles.repositoryContainer}>
-<<<<<<< HEAD
-          <Text style={styles.repository}>Repository 1</Text>
-
-          <View style={styles.techsContainer}>
-            <Text style={styles.tech}>ReactJS</Text>
-            <Text style={styles.tech}>Node.js</Text>
-          </View>
-=======
           {repositories.map((item) => (
             <View key={item.id}>
               <Text style={styles.repository}>{item.title}</Text>
@@ -56,7 +48,6 @@ export default function App() {
                   </Text>
                 ))}
               </View>
->>>>>>> 81484f8... Added map() to list repository's techs
 
               <View style={styles.likesContainer}>
                 <Text
@@ -67,14 +58,15 @@ export default function App() {
                 </Text>
               </View>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => handleLikeRepository(1)}
-            // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
-            testID={`like-button-1`}
-          >
-            <Text style={styles.buttonText}>Curtir</Text>
-          </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => handleLikeRepository(item.id)}
+                testID={`like-button-${item.id}`}
+              >
+                <Text style={styles.buttonText}>Curtir</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
         </View>
       </SafeAreaView>
     </>
