@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   SafeAreaView,
   View,
-  FlatList,
   Text,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
 
+import api from "./services/api";
+
 export default function App() {
+  const [repositories, setRepositories] = useState([]);
+
+  useEffect(() => {
+    api.get("repositories").then((resp) => {
+      if (resp.status === 200) {
+        setRepositories(resp.data);
+      }
+    });
+  }, []);
+
   async function handleLikeRepository(id) {
     // Implement "Like Repository" functionality
   }
@@ -23,12 +34,8 @@ export default function App() {
           <Text style={styles.repository}>Repository 1</Text>
 
           <View style={styles.techsContainer}>
-            <Text style={styles.tech}>
-              ReactJS
-            </Text>
-            <Text style={styles.tech}>
-              Node.js
-            </Text>
+            <Text style={styles.tech}>ReactJS</Text>
+            <Text style={styles.tech}>Node.js</Text>
           </View>
 
           <View style={styles.likesContainer}>
