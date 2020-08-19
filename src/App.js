@@ -58,15 +58,14 @@ export default function App() {
               </View>
 >>>>>>> 81484f8... Added map() to list repository's techs
 
-          <View style={styles.likesContainer}>
-            <Text
-              style={styles.likeText}
-              // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
-              testID={`repository-likes-1`}
-            >
-              3 curtidas
-            </Text>
-          </View>
+              <View style={styles.likesContainer}>
+                <Text
+                  style={styles.likeText}
+                  testID={`repository-likes-${item.id}`}
+                >
+                  {item.likes} curtidas
+                </Text>
+              </View>
 
           <TouchableOpacity
             style={styles.button}
